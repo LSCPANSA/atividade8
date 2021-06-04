@@ -1,0 +1,214 @@
+programa {
+    
+    inclua biblioteca Util --> u
+    
+	funcao inicio() {
+		
+		inteiro Taposta 
+		inteiro vJogadas
+		escreva("**********************\n")
+		escreva("*BEM VINDO Á LOTERIA**\n")
+		escreva("*ABAIXO TEMOS 4 JOGOS*\n")
+		escreva("***ESCOLHA O DE SUA***\n")
+		escreva("****PREFERENCIA*******\n")
+		escreva("****1] mega-sena******\n")
+		escreva("****[2] quina*********\n")
+		escreva("****[3] loto-mania****\n")
+		escreva("****[4] loto-fácil****\n")
+		escreva("**********************\n")
+		escreva("Qual aposta deseja?: ")
+		leia(Taposta)
+		escreva("Quantas vezes irá jogar?: ")
+		leia(vJogadas)
+        limpa()
+		inteiro qDezenas
+		inteiro nGerados[50]
+   
+		escolha(Taposta){
+		    
+		    caso 1: 
+		    escreva("*************************\n")
+		    escreva("*Você escolheu Mega-sena!*\n")
+		    escreva("*************************\n\n")
+    		escreva("Quantas dezenas deseja? \n")
+    		leia(qDezenas)
+    		
+    		enquanto(qDezenas < 6 ou qDezenas > 15){
+    		    escreva("Só aceitamos 6 a 15 dezenas, tente novamente:")
+    		    leia(qDezenas)
+    		}
+    		
+    		limpa()
+    		
+    		para(inteiro c = 0; c< vJogadas; c++){
+                gerarNumeros(nGerados, qDezenas, 1, 60)
+        		ordenar(nGerados, qDezenas)
+        		para(inteiro i = 0; i< qDezenas; i++){
+        		    escreva(nGerados[i], "-")
+    	    	}
+    	    	escreva("\n\n")
+    		}
+    		
+    		real valorDezenasMS[16]
+		    
+		    valorDezenasMS[6]  = 4.50
+		    valorDezenasMS[7]  = 31.50
+		    valorDezenasMS[8]  = 126.00
+		    valorDezenasMS[9]  = 378.00
+		    valorDezenasMS[10] = 945.00
+		    valorDezenasMS[11] = 2.079
+		    valorDezenasMS[12] = 4.158
+		    valorDezenasMS[13] = 7.722
+		    valorDezenasMS[14] = 13513.50
+		    valorDezenasMS[15] = 22520.50
+    		    
+    		gasto(valorDezenasMS, qDezenas, vJogadas)
+    		
+    		pare
+    		caso 2:
+            escreva("********************\n")
+            escreva("Você escolheu Quina!\n")		
+	    	escreva("********************\n\n")
+    		escreva("Quantas dezenas vc deseja?\n")
+    		leia(qDezenas)
+    		
+    		enquanto(qDezenas < 5 ou qDezenas > 15){
+    		    escreva("Só aceitamos 5 a 15 dezenas na quina, tente novamente:")
+    		    leia(qDezenas)
+    		}
+    		
+    		limpa()
+    		
+    		para(inteiro c = 0; c< vJogadas; c++){
+                gerarNumeros(nGerados, qDezenas, 1, 80)
+        		ordenar(nGerados, qDezenas)
+        		para(inteiro i = 0; i< qDezenas; i++){
+        		    escreva(nGerados[i], "-")
+    	    	}
+    	    	escreva("\n")
+    		}
+    		
+    		real valorDezenasQ[16]
+		    
+		    valorDezenasQ[5]  = 2.00
+		    valorDezenasQ[6]  = 12.00
+		    valorDezenasQ[7]  = 42.00
+		    valorDezenasQ[8]  = 112.00
+		    valorDezenasQ[9]  = 252.00
+		    valorDezenasQ[10] = 504.00
+		    valorDezenasQ[11] = 924.00
+		    valorDezenasQ[12] = 1584.00
+		    valorDezenasQ[13] = 2574.00
+		    valorDezenasQ[14] = 4004.00
+		    valorDezenasQ[15] = 6006.00
+    		    
+    		gasto(valorDezenasQ, qDezenas, vJogadas)
+    		
+    		pare
+    		
+    		caso 3: 
+		    escreva("************************\n")
+		    escreva("Você escolheu Lotomania!\n")
+		    escreva("************************\n\n")
+    		escreva("Temos um numero fixo de 50 dezenas na lotomania")
+    		qDezenas = 50
+    		
+    		limpa()
+    		
+    		para(inteiro c = 0; c< vJogadas; c++){
+                gerarNumeros(nGerados, qDezenas, 1, 100)
+        		ordenar(nGerados, qDezenas)
+        		para(inteiro i = 0; i< qDezenas; i++){
+        		    escreva(nGerados[i], "-")
+    	    	}
+    	    	escreva("\n\n")
+    		}
+    		
+    		real valorLM = 2.50
+		   
+    	    escreva("O valor gasto: ", valorLM * vJogadas,"\n")
+    		
+    		pare
+    		
+//*************************************************
+//**************lotofacil**************************
+
+    		caso 4:
+		    escreva("************************\n")
+		    escreva("Você escolheu Lotofácil!\n")
+		    escreva("************************\n\n")
+    		escreva("Quantas dezenas deseja?\n")
+    		leia(qDezenas)
+    		
+    		enquanto(qDezenas < 15 ou qDezenas > 20){
+    		    escreva("Só aceitamos 15 a 20 dezenas na lotofácil, tente novamente:")
+    		    leia(qDezenas)
+    		}
+    		
+    		limpa()
+    		
+    		para(inteiro c = 0; c< vJogadas; c++){
+                gerarNumeros(nGerados, qDezenas, 1, 25)
+        		ordenar(nGerados, qDezenas)
+        		para(inteiro i = 0; i< qDezenas; i++){
+        		    escreva(nGerados[i], "-")
+    	    	}
+    	    	escreva("\n")
+    		}
+    		real valorDezenasLF[21]
+		    
+		    valorDezenasLF[15]  = 2.50
+		    valorDezenasLF[16]  = 40.00
+		    valorDezenasLF[17]  = 2040.00
+		    valorDezenasLF[18]  = 2040.00
+		    valorDezenasLF[19]  = 9690.00
+		    valorDezenasLF[20]  = 38760.00
+    		    
+    		gasto(valorDezenasLF, qDezenas, vJogadas)
+    		
+    		pare
+	
+		}
+	}
+//******************************
+//***********FUNÇÃO*************
+//******************************
+
+	funcao gerarNumeros(inteiro vetor[], inteiro qDezenas, inteiro valorInicial, inteiro valorFinal){
+	    para(inteiro i = 0; i< qDezenas; i++){
+		    
+		    inteiro numeroGerado =  u.sorteia(valorInicial, valorFinal)
+		    
+		    se(existe(vetor, numeroGerado, i)){ i-- }
+		    senao{
+		        vetor[i] = numeroGerado
+		    }
+		}
+	}
+	funcao logico existe(inteiro nGerados[], inteiro numeroGerado, inteiro qGerada){
+	    para(inteiro o = 0; o< qGerada; o++){
+		        se(nGerados[o] == numeroGerado){
+		            retorne verdadeiro
+		        }
+		    }
+		retorne falso
+	}
+	funcao gasto(real valorDezenas[], inteiro qDezenas, inteiro vezesJogadas){
+	    escreva("Você gastou R$", valorDezenas[qDezenas]* vezesJogadas, "\n")
+	}
+	funcao ordenar (inteiro vetor[], inteiro tamanho){
+		para (inteiro i = 0; i < tamanho; i++){
+			para (inteiro o = 0; o < tamanho-1; o++){
+				se (vetor [o] > vetor[o+1]){
+					troca (vetor, o, o+1)
+				}
+			}
+		}
+	}
+	funcao troca (inteiro v[], inteiro a, inteiro b){
+		inteiro c = v[a]
+		
+		v[a] = v[b]
+		v[b] = c
+	}
+}
